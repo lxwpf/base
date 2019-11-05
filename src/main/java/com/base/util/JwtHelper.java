@@ -90,16 +90,16 @@ public class JwtHelper {
      * 验证jwt
      */
     public static Claims verifyJwt(String token) {
-        //签名秘钥，和生成的签名的秘钥一模一样
+        // 签名秘钥，和生成的签名的秘钥一模一样
         SecretKey key = obtainKey(PRIVATE_KEY);
         Claims claims;
         try {
-            claims = Jwts.parser()  //得到DefaultJwtParser
-                    .setSigningKey(key)         //设置签名的秘钥
+            claims = Jwts.parser()                 // 得到DefaultJwtParser
+                    .setSigningKey(key)            // 设置签名的秘钥
                     .parseClaimsJws(token).getBody();
         } catch (Exception e) {
             claims = null;
-        }//设置需要解析的jwt
+        }
         return claims;
 
     }

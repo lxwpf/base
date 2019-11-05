@@ -3,14 +3,9 @@ package com.base.comm;
 import com.base.domain.result.Result;
 import com.base.enumbase.ResultEnum;
 import com.base.exception.BusinessException;
-import com.base.util.UserAdvice;
-import com.base.util.UserAdviceImpl;
-import com.base.util.UserProxy;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
-import java.lang.reflect.Proxy;
-import java.util.UUID;
 
 /**
  * 模板基类，统一异常处理，返回结果处理

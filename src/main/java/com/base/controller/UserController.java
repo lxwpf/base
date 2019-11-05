@@ -5,6 +5,7 @@ import com.base.domain.result.Result;
 import com.base.service.UserService;
 import com.base.util.JwtHelper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,7 +33,7 @@ public class UserController {
     @RequestMapping("/queryAll")
     @ResponseBody
     public Result<List<User>> queryAll(){
-        return userService.queryAll();
+        return ResponseEntity.ok().body(userService.queryAll()).getBody();
     }
 
     @RequestMapping("/queryByName")
@@ -49,6 +50,7 @@ public class UserController {
             String token = JwtHelper.obtainToken(String.valueOf(result.getData().getId()));
             response.addCookie(new Cookie("token", token));
         }
+        result.setData(null);
         return result;
     }
 
